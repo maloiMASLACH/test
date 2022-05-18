@@ -15,7 +15,7 @@ import {
   Span
 } from './top-nft-projects.styles';
 import { IconCollection, IconContainer, IconPrice, Percent } from './components/table/table.styles';
-import { BlockTitle } from '../../shared/block-title/block-title.component';
+import { BlockTitle } from '../banner/components/block-title/block-title.component';
 
 const setRowData = () => {
   return rowTitles.map(
@@ -47,16 +47,13 @@ const setRowData = () => {
   );
 };
 
-const TopNftProjectsComponent: React.FC<TopNftProjectsProps> = (props) => {
-  const {
-    subTitleLargeView,
-    subtitleSmallView,
-    buttonText,
-    mobileTitleText,
-    laptopTitleText,
-    ...attributies
-  } = props;
-
+const TopNftProjectsComponent: React.FC<TopNftProjectsProps> = ({
+  subTitleLargeView,
+  subtitleSmallView,
+  buttonText,
+  mobileTitleText,
+  laptopTitleText
+}) => {
   const data = useMemo(() => setRowData(), []);
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,

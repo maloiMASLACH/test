@@ -3,14 +3,11 @@ import clsx from 'clsx';
 import { Button, NavLink, BurgerButton, SearchIcon, AnnouncementBar, images } from '../../shared';
 import { TopBarVariants, TopBarProps } from './top-bar.model';
 import { HeaderBlock, Wrapper } from './top-bar.styles';
+import { useModel } from '../../hooks/useModel';
 
 export const TopBar: React.FC<TopBarProps> = React.memo(
   ({ variant = TopBarVariants.Guest, links, logo = images.logo, announcementText }) => {
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const menuHandler = () => {
-      setMenuOpen((prevState) => !prevState);
-    };
+    const [modelOpen, toggle]= useModel(false);
 
     const { isConnected, isGuest, isSearch } = useMemo(
       () => ({
@@ -33,7 +30,7 @@ export const TopBar: React.FC<TopBarProps> = React.memo(
         <Wrapper>
           <img className="logo" src={logo} alt="logo" />
 
-          <div onClick={menuHandler} className={clsx('nav-links', { opened: menuOpen })}>
+          <div onClick={toggle} className={clsx('nav-links', { opened: modelOpen })}>
             {isSearch && <SearchIcon className="search mobile" />}
             {links?.length &&
               links.map(({ link, title }) => <NavLink href={link}>{title}</NavLink>)}
@@ -58,7 +55,7 @@ export const TopBar: React.FC<TopBarProps> = React.memo(
             </div>
           )}
 
-          <BurgerButton className="burger" open={menuOpen} onClick={menuHandler} />
+          <BurgerButton className="burger" open={modelOpen} onClick={toggle} />
         </Wrapper>
       </HeaderBlock>
     );

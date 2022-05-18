@@ -1,25 +1,25 @@
 import { creators } from '../popular-creators/mock-data/data';
-import Carousel from '../../shared/carousel/carousel.component';
-import Card from '../../shared/card/card.component';
+import Carousel from '../../shared/components/carousel/carousel.component';
+import Card from '../../shared/components/card/card.component';
 import { PopularCreatorsProps } from './popular-creators.model';
 import { Wrapper } from './popular-creators.styles';
 import React from 'react';
-import { BlockTitle } from '../../shared/block-title/block-title.component';
+import { BlockTitle } from '../../shared/components/block-title/block-title.component';
 
-const PopularCreatorsComponent: React.FC<PopularCreatorsProps> = (props) => {
-  const { children, titleText, ...attributes } = props;
+const PopularCreatorsComponent: React.FC<PopularCreatorsProps> = ({ titleText, ...attributes }) => {
   return (
     <Wrapper>
       {titleText && <BlockTitle text={titleText} />}
       {creators && (
         <Carousel>
-          {creators.map((creator) => (
+          {creators.map(({id, title, description, imagePath}) => (
             <Card
-              key={creator.id}
+              key={id}
+              id={id}
               variant="secondary"
-              title={creator.title}
-              description={creator.description}
-              imagePath={creator.imagePath}
+              title={title}
+              description={description}
+              imagePath={imagePath}
             />
           ))}
         </Carousel>

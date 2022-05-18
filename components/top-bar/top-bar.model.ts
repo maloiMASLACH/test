@@ -1,4 +1,4 @@
-import { LinkExternalProps } from '../../shared/nav-link/nav-link.model';
+import { LinkExternalProps } from '../../shared/components/nav-link/nav-link.model';
 
 export interface TopBarProps {
   variant?: 'guest' | 'connected' | 'search';
@@ -7,7 +7,7 @@ export interface TopBarProps {
   announcementText?: string;
 }
 
-export enum TopBarVariants {
+export const enum TopBarVariants {
   Guest = 'guest',
   Connected = 'connected',
   Search = 'search'
