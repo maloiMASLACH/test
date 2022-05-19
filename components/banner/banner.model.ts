@@ -1,4 +1,4 @@
-import { cardVariant } from '../../shared/card/card.model';
+import { cardVariant } from '../../shared/components/card/card.model';
 
 export interface BannerProps {
   children?: JSX.Element[];

@@ -1,15 +1,6 @@
-import { cardVariant } from '../../shared/card/card.model';
-import { SocialIconExternalProps } from '../../shared/social-icon/social-icon.model';
-
+import { CardProps, cardVariant } from '../../shared/components/card/card.model';
 export interface CardsCarouselProps {
-  children?: JSX.Element[];
   blockTitle?: string;
-  cardData: {
-    id: number;
-    title: string;
-    description?: string;
-    imagePath: string;
-    socialLinks?: SocialIconExternalProps[];
-  }[];
+  cardData: CardProps[];
   cardType?: cardVariant;
 }

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { customTheme } from '../../shared/theme/custom-theme.model';
-import Carousel from '../../shared/carousel/carousel.component';
-import Card from '../../shared/card/card.component';
+import Carousel from '../../shared/components/carousel/carousel.component';
+import Card from '../../shared/components/card/card.component';
 import { ComingSoonProps } from './coming-soon.model';
 import { Wrapper, Title, Span, CardsWrapper } from './coming-soon.styles';
-import { BlockTitle } from '../../shared/block-title/block-title.component';
+import { BlockTitle } from '../banner/components/block-title/block-title.component';
 import { comingProjects } from './mock-data/data';
 
-const ComingSoonComponent: React.FC<ComingSoonProps> = (props) => {
-  const { titleText, ...attributes } = props;
+const ComingSoonComponent: React.FC<ComingSoonProps> = ({ titleText }) => {
   const { breakpoints } = customTheme;
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -34,13 +33,14 @@ const ComingSoonComponent: React.FC<ComingSoonProps> = (props) => {
         <>
           {titleText && <BlockTitle text={titleText} />}
           <Carousel>
-            {comingProjects.map((project) => (
+            {comingProjects.map(({ id, title, imagePath, socialLinks }) => (
               <Card
-                key={project.id}
+                key={id}
+                id={id}
                 variant="light"
-                title={project.title}
-                imagePath={project.imagePath}
-                socialLinks={project.socialLinks}
+                title={title}
+                imagePath={imagePath}
+                socialLinks={socialLinks}
               />
             ))}
           </Carousel>
@@ -49,13 +49,14 @@ const ComingSoonComponent: React.FC<ComingSoonProps> = (props) => {
         <>
           {titleText && <BlockTitle text={titleText} />}
           <CardsWrapper>
-            {comingProjects.map((project) => (
+            {comingProjects.map(({ id, title, imagePath, socialLinks }) => (
               <Card
-                key={project.id}
+                key={id}
+                id={id}
                 variant="light"
-                title={project.title}
-                imagePath={project.imagePath}
-                socialLinks={project.socialLinks}
+                title={title}
+                imagePath={imagePath}
+                socialLinks={socialLinks}
               />
             ))}
           </CardsWrapper>
