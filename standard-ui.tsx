@@ -34,7 +34,7 @@ export interface UiConfig {
 }
 
 const StyledStandardUi = styled.div`
-  color: pink;
+  color: black;
   background: #0e1457;
 `;
 
